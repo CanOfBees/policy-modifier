@@ -34,3 +34,10 @@ $proc = new XSLTProcessor();
 $proc->importStylesheet($xsl);
 $proc->setParameter('', 'users', $users);
 
+// get the current working directory
+$current_directory = getcwd();
+$output_file_path = "{$current_directory}/output/policy-updater-results.xml";
+echo $output_directory;
+
+// output the result of the stylesheet
+//$proc->transformToUri($xml, $output_directory);

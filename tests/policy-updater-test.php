@@ -19,25 +19,26 @@ $users = implode(",", array("thesis_manager", "manager", "admin", "fedoraAdmin")
  * stylesheet. The implosion converst the array to a datatype the stylesheet
  * can use.
  */
-$resources = implode(",", array("PDF", "FULL_TEXT", "SUPPL_0"));
+$dsids = implode(",", array("PDF", "FULL_TEXT", "SUPPL_0"));
 
 // add our stylesheet
 $xsl = new DOMDocument;
-$xsl->load('../xsl/policy-updater.xsl');
+$xsl->load('xsl/policy-updater.xsl');
 
 // add our POLICY datatream
 $xml = new DOMDocument;
-$xml->load('./resources/xacml-policy-with-embargo.xml');
+$xml->load('tests/resources/xacml-policy-with-embargo.xml');
 
 // instantiate a new XSLTProcessor
 $proc = new XSLTProcessor();
 $proc->importStylesheet($xsl);
+// include parameters for the stylesheet
 $proc->setParameter('', 'users', $users);
+$proc->setParameter('', 'dsids', $dsids);
 
 // get the current working directory
 $current_directory = getcwd();
-$output_file_path = "{$current_directory}/output/policy-updater-results.xml";
-echo $output_directory;
+$output_file_path = "file://{$current_directory}/tests/output/policy-updater-results.xml";
 
 // output the result of the stylesheet
-//$proc->transformToUri($xml, $output_directory);
+$proc->transformToUri($xml, $output_file_path);

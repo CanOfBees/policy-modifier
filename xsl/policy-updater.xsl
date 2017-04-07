@@ -9,6 +9,7 @@
   <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
 
   <xsl:param name="users" select="''"/>
+  <xsl:param name="dsids" select="''"/>
 
   <xsl:template match="@*|node()">
     <xsl:copy>

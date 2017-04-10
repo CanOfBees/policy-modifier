@@ -9,13 +9,18 @@ A temporary repository to hold XSL stylesheets for modifying XACML policies.
 This directory includes the following:
 ```
 ├── output
+├── policy-adder-test.php
 ├── policy-updater-test.php
 └── resources
+    ├── xacml-policy-blank.xml
     ├── xacml-policy-with-embargo.xml
     └── xacml-policy-without-embargo.xml
+
 ```
 
-**policy-updater-test.php**: this is a simple PHP script that calls the apppropriate pieces to generate a sample document in `tests/output`. This script updates the users and datastreams (DSIDs) in the XACML policy document.
+**policy-updater-test.php**: this is a simple PHP script that calls the appropriate pieces to generate a sample document in `tests/output`. This script updates the users and datastreams (DSIDs) in the XACML policy document.
+
+**policy-adder-test.php**: this is a simple PHP script that calls the appropriate pieces to generate a sample document in `tests/output`. This script inserts two separate _<Rule>_ elements, with the appropriate datastreams (DSIDs) and users.
 
 **output/**: a temporary holding place for test output. Files written here haven't been tracked by git.
 
@@ -23,7 +28,7 @@ This directory includes the following:
 
 #### usage ####
 1. cd to `policy-modifier/tests`
-2. run `$ php policy-updater-test.php`
+2. run `$ php policy-updater-test.php` | `$ php policy-adder-test.php`
 3. review the results under `output/`
 4. make changes
 5. repeat {1..4}

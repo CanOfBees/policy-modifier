@@ -12,22 +12,25 @@
  * stylesheet. The implosion converts the array to a datatype the stylesheet
  * can use.
  */
-$users = implode(",", array("thesis_manager", "manager", "admin", "fedoraAdmin"));
+$users = implode(",", array("thesis_manager", "manager", "admin", "fedoraAdmin", "derbyAdmin"));
 
 /**
  * $resources = an imploded array of DSIDs that will be passed to the XSL
  * stylesheet. The implosion converst the array to a datatype the stylesheet
  * can use.
  */
-$dsids = implode(",", array("PDF", "FULL_TEXT", "SUPPL_0"));
+$dsids = implode(",", array("PDF", "FULL_TEXT", "SUPPL_0", "FOO_TEXT"));
+
+// get the current working directory
+$current_directory = getcwd();
 
 // add our stylesheet
 $xsl = new DOMDocument;
-$xsl->load('xsl/policy-updater.xsl');
+$xsl->load('../xsl/policy-updater.xsl');
 
 // add our POLICY datatream
 $xml = new DOMDocument;
-$xml->load('tests/resources/xacml-policy-with-embargo.xml');
+$xml->load('./resources/xacml-policy-with-embargo.xml');
 
 // instantiate a new XSLTProcessor
 $proc = new XSLTProcessor();
@@ -36,9 +39,7 @@ $proc->importStylesheet($xsl);
 $proc->setParameter('', 'users', $users);
 $proc->setParameter('', 'dsids', $dsids);
 
-// get the current working directory
-$current_directory = getcwd();
-$output_file_path = "file://{$current_directory}/tests/output/policy-updater-results.xml";
+$output_file_path = "file://{$current_directory}/output/policy-updater-results.xml";
 
 // output the result of the stylesheet
 $proc->transformToUri($xml, $output_file_path);

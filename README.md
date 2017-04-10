@@ -15,11 +15,11 @@ This directory includes the following:
     └── xacml-policy-without-embargo.xml
 ```
 
-**policy-updater-test.php**: this is a simple PHP script that calls the apppropriate pieces to generate a sample document in `tests/output`.
+**policy-updater-test.php**: this is a simple PHP script that calls the apppropriate pieces to generate a sample document in `tests/output`. This script updates the users and datastreams (DSIDs) in the XACML policy document.
 
-**output**: a temporary holding place for test output. Files written here haven't been tracked by git.
+**output/**: a temporary holding place for test output. Files written here haven't been tracked by git.
 
-**resources**: a holding place for sample XACML documents. One of the samples includes an embargo while the other doesn't.
+**resources/**: a holding place for sample XACML documents. One of the samples includes an embargo while the other doesn't.
 
 #### usage ####
 1. cd to `policy-modifier/tests`

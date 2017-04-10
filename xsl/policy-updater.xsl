@@ -10,8 +10,8 @@
   <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
   <xsl:strip-space elements="*"/>
 
-  <xsl:param name="users" select="'admin, userA, fedoraAdmin, derbyAdmin'"/>
-  <xsl:param name="dsids" select="'PDF, FULL_TEXT, FOOOOO'"/>
+  <xsl:param name="users" select="''"/>
+  <xsl:param name="dsids" select="''"/>
 
   <xsl:template match="@*|node()">
     <xsl:copy>

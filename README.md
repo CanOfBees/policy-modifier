@@ -24,7 +24,7 @@ This directory includes the following:
 #### usage ####
 1. cd to `policy-modifier/tests`
 2. run `$ php policy-updater-test.php`
-3. review the results under `tests/output/`
+3. review the results under `output/`
 4. make changes
 5. repeat {1..4}
 
